@@ -22,9 +22,9 @@
     <div id="container"></div>
 
   <script src="js/third-party/threejs/three.js"></script>
-<!--> <script src="js/third-party/threejs/StereoEffect.js"></script>
+ <script src="js/third-party/threejs/StereoEffect.js"></script>
   <script src="js/third-party/threejs/DeviceOrientationControls.js"></script>
-  <script src="js/third-party/threejs/OrbitControls.js"></script><-->
+  <script src="js/third-party/threejs/OrbitControls.js"></script>
   <script src="js/optimer_bold.typeface.js"></script>
   <script src="js/optimer_regular.typeface.js"></script>
   <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -49,7 +49,7 @@
       container = document.getElementById('container');
       container.appendChild(element);
 
-       //effect = new THREE.StereoEffect(renderer);
+       effect = new THREE.StereoEffect(renderer);
 
       scene = new THREE.Scene();
 
@@ -204,7 +204,7 @@
       camera.updateProjectionMatrix();
 
       renderer.setSize(width, height);
-      // effect.setSize(width, height);
+       effect.setSize(width, height);
     }
 
     function update(dt) {
@@ -217,7 +217,7 @@
 
     function render(dt) {
       renderer.render(scene, camera);
-      // effect.render(scene, camera);
+       effect.render(scene, camera);
     }
 
     function animate(t) {
