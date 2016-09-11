@@ -33,7 +33,7 @@
     var camera, scene, renderer;
     var effect, controls;
     var element, container;
-    var marginbottom = 4, chartwidth = 90, chartheight = 30; //3D units
+    var marginbottom = 4, chartwidth = 900, chartheight = 300; //3D units
     var xscale = d3.scale.linear().range([-chartwidth/2, chartwidth/2]),
         yscale = d3.scale.linear().range([0, chartheight]);
 
@@ -126,7 +126,7 @@
 
       /////// START CONTENT HERE ////////
 
-      d3.csv('data.csv', population, function(data){
+      d3.csv('types.csv', population, function(data){
         xscale.domain([0, data.length - 1]);
         yscale.domain([0, d3.max(data, function(d){ return d.all; })]);
 
@@ -171,8 +171,8 @@
 
       function population(d) {
         d.all = +d.all;
-        d.male = +d.male;
-        d.female = +d.female;
+        d.EP = +d.EP;
+        d.PP = +d.PP;
         return d;
       }
 
