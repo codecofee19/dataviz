@@ -126,9 +126,9 @@
 
       /////// START CONTENT HERE ////////
 
-      d3.csv('inc.csv', population, function(data){
+      d3.csv('resp.csv', population, function(data){
         xscale.domain([0, data.length - 1]);
-       yscale.domain([0, d3.max(data, function(d){ return d.call; })]);
+       yscale.domain([0, d3.max(data, function(d){ return d.response; })]);
         var columnwidth = (chartwidth / data.length);
         columnwidth -= columnwidth * 0.1;
 
@@ -139,7 +139,7 @@
 
 
         data.forEach(function(d, i, a){
-          var colheight = yscale(d.call);
+          var colheight = yscale(d.response);
           var columngeo = new THREE.BoxGeometry(columnwidth, colheight, columnwidth);
           var columnmesh = new THREE.Mesh(columngeo, columnmaterial);
           columnmesh.position.set(xscale(i), colheight/2 + marginbottom, 0); //Box geometry is positioned at its’ center, so we need to move it up by half the height
@@ -169,12 +169,12 @@
       });
 
       function population(d) {
-        d.year_ID = +d.year_ID;
-        d.call = +d.call;
+        d.key = +d.key;
+        d.response = +d.response;
         return d;
       }
 
-      var title = createType({text: "911 Calls in Austin"});
+      var title = createType({text: "Ambulance Responses in Austin"});
       title.position.set(-chartwidth/2, chartheight + 15, -5);
       scene.add(title);
 
